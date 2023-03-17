@@ -1,24 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
-
+import { BrowserRouter } from 'react-router-dom'
+import { useState } from 'react'
+import { HistoryContext } from './components/atoms/Context'
+import { HelmetProvider } from 'react-helmet-async'
+import AnimatedRoutes from './AnimatedRoutes';
 function App() {
+  const [path, setPath] = useState([])
+  const helmetContext = {};
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <HelmetProvider context={helmetContext}>
+        <BrowserRouter>
+          <HistoryContext.Provider
+            value={{ path, setPath }}
+          >
+            <AnimatedRoutes />
+          </HistoryContext.Provider>
+        </BrowserRouter>
+      </HelmetProvider>
+    </>
   );
 }
 
