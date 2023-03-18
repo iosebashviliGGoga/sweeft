@@ -59,8 +59,8 @@ function User1() {
 
   function handleScroll() {
     if (
-      window.innerHeight + document.documentElement.scrollTop ===
-      document.documentElement.offsetHeight
+      window.innerHeight + document.documentElement.scrollTop >
+      document.documentElement.offsetHeight - 10
     ) {
       setPage(page + 1);
     }
